@@ -17,9 +17,13 @@
 ```
 ##### Apply the Argo CD manifest:
  ```base
-   kubectl port-forward -n argocd service/argocd-server 8443:443 --address=0.0.0.0 &
+   kubectl port-forward -n argocd svc/argocd-server 8443:443 --address=0.0.0.0 &
 ```
 
+##### Get Initial Password:
+ ```base
+   kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+```
 
 ##### Install cli:
  ```base

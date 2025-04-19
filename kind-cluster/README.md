@@ -31,8 +31,8 @@ rm -f kubectl
 kubectl version --client
 ```
 
-## 2. Create Shell script kindCluster.sh
-Installation process of kubectl
+## 3. Create Shell script 
+Installation process kindCluster.sh
 ```base
 
 #!/bin/bash

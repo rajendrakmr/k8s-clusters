@@ -18,20 +18,15 @@ sudo mv ./kind /usr/local/bin/kind
 Installation process of kubectl 
 ```bash
 #!/bin/bash
+VERSION="v1.32.0"
+URL="https://dl.k8s.io/release/${VERSION}/bin/linux/amd64/kubectl"
+INSTALL_DIR="/usr/local/bin"
 
-# Download kubectl file
-# For x86_64 
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
-# For ARM64 d
-
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
-
-# Install kubectl
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+curl -LO "$URL"
 chmod +x kubectl
-mkdir -p ~/.local/bin
-mv ./kubectl ~/.local/bin/kubectl
+sudo mv kubectl $INSTALL_DIR/
+kubectl version --client
+rm -f kubectl
 
 kubectl version --client
 ```
